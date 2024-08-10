@@ -11,27 +11,30 @@ FILE_PATH = "data/남구/남구_crack_Mobiltech_data.csv"
 def get_analysis_function_schema():
     return {
         "name": "analyze_data",
-        "description": "Analyze road damage data and provide insights and recommendations.",
+        "description": "Analyze the road damage data to identify patterns, trends, and potential issues. Provide a detailed interpretation of the data, focusing on any significant findings related to road damage incidents, such as location, frequency, and severity.",
         "parameters": {
             "type": "object",
             "properties": {
                 "data": {
                     "type": "array",
-                    "description": "The data to be analyzed in JSON format.",
                     "items": {
                         "type": "object",
                         "properties": {
-                            # 여기에 데이터 필드를 정의할 수 있습니다
-                            "field1": {"type": "string"},
-                            "field2": {"type": "number"},
-                            # 데이터 필드에 맞게 더 추가할 수 있습니다
-                        }
+                            "filename": {"type": "integer"},
+                            "longitude": {"type": "number"},
+                            "latitude": {"type": "number"},
+                            "classname": {"type": "string"},
+                            "time": {"type": "string"},
+                            "address": {"type": "string"}
+                        },
+                        "required": ["filename", "longitude", "latitude", "classname", "time", "address"]
                     }
                 }
             },
             "required": ["data"]
         }
     }
+
 
 async def build_data_chunk(df: pd.DataFrame) -> list:
     """Convert DataFrame to list of dictionaries (JSON serializable)."""
@@ -52,18 +55,17 @@ async def fetch_analysis(session: aiohttp.ClientSession, data_chunk: list) -> di
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "gpt-4o",  # 최신 모델 사용
+        "model": "gpt-4",  # Regular GPT-4 model
         "messages": [
             {"role": "system", "content": "You are an expert in data analysis. Provide detailed analysis and recommendations based on the given data."},
-            {"role": "user", "content": "Analyze the following data and provide insights and recommendations according to the given prompts."}
+            {"role": "user", "content": "Analyze the following data and provide insights and recommendations."}
         ],
         "functions": [get_analysis_function_schema()],
-        "function_call": "auto",  # 자동으로 함수 호출
+        "function_call": {
+            "name": "analyze_data",
+            "arguments": json.dumps({"data": data_chunk})
+        }
     }
-    
-    # 데이터를 분석 함수에 올바르게 전달
-    function_arguments = {"data": data_chunk}
-    payload["function_call"] = {"name": "analyze_data", "arguments": json.dumps(function_arguments)}
 
     async with session.post(url, headers=headers, json=payload) as response:
         response_json = await response.json()
@@ -111,16 +113,16 @@ async def main():
     async with aiohttp.ClientSession() as session:
         # Fetch the analysis
         analysis_response = await fetch_analysis(session, data_chunk)
-        print(analysis_response)
-        # analysis_result = analysis_response['choices'][0]['message']['content']
-        # # # Build summary prompt
-        # summary_prompt = build_summary_prompt(analysis_result)
+        analysis_result = analysis_response['choices'][0]['message']['content']
+        # # Build summary prompt
+        summary_prompt = build_summary_prompt(analysis_result)
 
-        # # Fetch the summary
-        # summary = await fetch_summary(session=session, summary_prompt=summary_prompt)
+        # Fetch the summary
+        summary = await fetch_summary(session=session, summary_prompt=summary_prompt)
         
-        # print("최종 요약:")
-        # print(summary)
+        print("최종 요약:")
+        return summary
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    print(asyncio.run(main()))
+
