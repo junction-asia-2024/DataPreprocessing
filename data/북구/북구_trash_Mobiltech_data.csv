@@ -1,4 +1,4 @@
-id,longitude,latitude,classname,time,address
+filename,longitude,latitude,classname,time,address
 38487,129.3773322,36.05493644,trash,2024-06-02 22:58:24,경상북도 포항시 북구 항구동
 38516,129.3753946,36.05334568,trash,2024-06-02 23:17:28,경상북도 포항시 북구 항구동
 38519,129.3713769,36.04998744,trash,2024-06-02 23:22:15,경상북도 포항시 북구 학산동
