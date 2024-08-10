@@ -13,13 +13,14 @@ load_dotenv()
 openai.api_key =  os.getenv("API_KEY")
 data = pd.read_csv("total_pohang.csv")
 
-# 주소에서 필요한 부분 추출
-data["do"] = data["address"].str.split(" ").apply(lambda x: x[0])
-data["si"] = data["address"].str.split(" ").apply(lambda x: x[1])
-data["gu"] = data["address"].str.split(" ").apply(lambda x: x[2])
-data["dong"] = data["address"].str.split(" ").apply(lambda x: x[3])
 
 def ranking_danger_combined() -> dict:
+    # 주소에서 필요한 부분 추출
+    data["do"] = data["address"].str.split(" ").apply(lambda x: x[0])
+    data["si"] = data["address"].str.split(" ").apply(lambda x: x[1])
+    data["gu"] = data["address"].str.split(" ").apply(lambda x: x[2])
+    data["dong"] = data["address"].str.split(" ").apply(lambda x: x[3])
+    
     # 유니크 값 추출
     unique_classnames: NDArray = np.unique(data["classname"])
     unique_gu: NDArray = np.unique(data["gu"])
