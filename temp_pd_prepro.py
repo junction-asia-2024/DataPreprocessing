@@ -1,16 +1,10 @@
-import os
-import openai
 import pandas as pd
 import numpy as np
-from typing import Any
 from numpy.typing import NDArray
 from datetime import datetime
-from dotenv import load_dotenv
 
 
 # 데이터 로드
-load_dotenv()
-openai.api_key =  os.getenv("API_KEY")
 data = pd.read_csv("total_pohang.csv")
 
 # 주소에서 필요한 부분 추출
@@ -61,33 +55,3 @@ def ranking_danger_combined() -> dict:
     result["date_max_time"] = max_date_str
 
     return result
-
-
-def generate_summary() -> Any:
-    data = ranking_danger_combined()  
-
-    prompt = (
-        f"다음 데이터를 공무원에서 주무관한테 보고하는것 처럼 만들어 주면서 예측도 진행해봐:\n"
-        f"{data}\n"  
-        f"요약:"
-    )
-
-    response = openai.ChatCompletion.create(
-            model="gpt-4o",
-            messages=[
-            {"role": "system", "content": "You are an assistant that summarizes data."},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=1500
-        )
-        
-    return response.choices[0].message['content'].strip()
-
-
-def main():    
-    # 데이터 요약 생성
-    summary = generate_summary()
-    return summary
-
-
-main()
