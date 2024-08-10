@@ -19,8 +19,6 @@ filtered_data["gu"] = filtered_data["regionname_2"].apply(
     lambda x: x.split(" ")[1] if isinstance(x, str) and len(x.split(" ")) > 1 else None
 )
 filtered_data["time"] = filtered_data["time"].str.split(".").apply(lambda x: x[0])
-filtered_data.rename(columns={"id": "filename"}, inplace=True)
-
 
 # 확인할 열 이름들
 region_names = [
@@ -34,6 +32,8 @@ region_names = [
 
 
 def data_combined(dataframe: pd.DataFrame) -> None:
+    concat_data = []
+    
     # 'gu'와 'classname'의 고유값 추출
     unique_gu = np.unique(dataframe["gu"].dropna().values)
     unique_value = np.unique(dataframe["classname"].dropna().values)
@@ -87,11 +87,10 @@ def data_combined(dataframe: pd.DataFrame) -> None:
                 filtered_data = filtered_data.drop(columns=["gu"])
 
                 filtered_data.reindex(columns=reindex_col)
-                # 데이터 파일로 저장
-                filtered_data.to_csv(
-                    f"data/{i}/{i}_{col}_Mobiltech_data.csv", index=False
-                )
-
+                concat_data.append(filtered_data)
+    
+    return concat_data
 
 # 데이터 로드 및 예제 실행
-data_combined(filtered_data)
+data = data_combined(filtered_data)
+pd.DataFrame(pd.concat(data)).to_csv("total_pohang.csv", index=False)

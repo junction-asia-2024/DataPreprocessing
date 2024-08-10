@@ -1,4 +1,4 @@
-filename,longitude,latitude,classname,time,address
+id,longitude,latitude,classname,time,address
 38483,129.3707962,36.04379729,banner,2024-06-02 22:54:24,경상북도 포항시 북구 동빈1가
 38489,129.3847538,36.06433623,banner,2024-06-02 23:01:58,경상북도 포항시 북구 두호동
 38490,129.3874377,36.06411902,banner,2024-06-02 23:02:27,경상북도 포항시 북구 두호동

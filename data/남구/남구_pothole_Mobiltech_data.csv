@@ -1,4 +1,4 @@
-filename,longitude,latitude,classname,time,address
+id,longitude,latitude,classname,time,address
 38546,129.3481025,36.01035134,pothole,2024-06-03 00:05:46,경상북도 포항시 남구 상도동
 38618,129.3394052,36.02961096,pothole,2024-06-03 01:34:19,경상북도 포항시 남구 이동
 38662,129.3738755,36.04326428,pothole,2024-06-03 23:01:11,경상북도 포항시 남구 송도동

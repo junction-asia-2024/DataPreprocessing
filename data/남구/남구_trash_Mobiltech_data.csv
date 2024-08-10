@@ -1,4 +1,4 @@
-filename,longitude,latitude,classname,time,address
+id,longitude,latitude,classname,time,address
 38525,129.3678018,36.01131692,trash,2024-06-02 23:42:43,경상북도 포항시 남구 해도동
 38530,129.3475146,36.0182256,trash,2024-06-02 23:50:45,경상북도 포항시 남구 대잠동
 38547,129.3644466,36.01410845,trash,2024-06-03 00:10:16,경상북도 포항시 남구 대도동

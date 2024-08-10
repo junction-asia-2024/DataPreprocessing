@@ -1,4 +1,4 @@
-filename,longitude,latitude,classname,time,address
+id,longitude,latitude,classname,time,address
 38473,129.3440942,36.00376978,crack,2024-06-02 22:39:40,경상북도 포항시 남구 상도동
 38474,129.3499638,36.00365329,crack,2024-06-02 22:40:33,경상북도 포항시 남구 상도동
 38475,129.3647608,36.00730033,crack,2024-06-02 22:42:20,경상북도 포항시 남구 대도동 형산강북로 356.0

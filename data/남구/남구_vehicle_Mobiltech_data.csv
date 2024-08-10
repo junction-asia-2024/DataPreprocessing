@@ -1,4 +1,4 @@
-filename,longitude,latitude,classname,time,address
+id,longitude,latitude,classname,time,address
 38551,129.3674548,36.0222817,vehicle,2024-06-03 00:29:44,경상북도 포항시 남구 대도동
 38552,129.3669135,36.02220421,vehicle,2024-06-03 00:29:52,경상북도 포항시 남구 대도동
 38553,129.3655,36.02193166,vehicle,2024-06-03 00:30:13,경상북도 포항시 남구 대도동

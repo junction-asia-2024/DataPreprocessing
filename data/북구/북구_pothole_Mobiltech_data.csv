@@ -1,4 +1,4 @@
-filename,longitude,latitude,classname,time,address
+id,longitude,latitude,classname,time,address
 38504,129.4123659,36.07277923,pothole,2024-06-02 23:06:36,경상북도 포항시 북구 여남동
 38591,129.3528984,36.02198016,pothole,2024-06-03 01:12:30,경상북도 포항시 북구 죽도동
 38614,129.3433909,36.03252613,pothole,2024-06-03 01:30:38,경상북도 포항시 북구 득량동
