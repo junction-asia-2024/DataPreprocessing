@@ -1,4 +1,4 @@
-id,longitude,latitude,classname,time,address
+filename,longitude,latitude,classname,time,address
 38531,129.3548282,36.02768982,vehicle,2024-06-02 23:54:10,경상북도 포항시 북구 용흥동
 38532,129.3552615,36.02837968,vehicle,2024-06-02 23:54:19,경상북도 포항시 북구 용흥동
 38533,129.3567861,36.02987869,vehicle,2024-06-02 23:55:33,경상북도 포항시 북구 용흥동

@@ -19,6 +19,8 @@ filtered_data["gu"] = filtered_data["regionname_2"].apply(
     lambda x: x.split(" ")[1] if isinstance(x, str) and len(x.split(" ")) > 1 else None
 )
 filtered_data["time"] = filtered_data["time"].str.split(".").apply(lambda x: x[0])
+filtered_data.rename(columns={"id": "filename"}, inplace=True)
+print(filtered_data)
 
 # 확인할 열 이름들
 region_names = [
