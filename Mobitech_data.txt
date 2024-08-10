@@ -1,0 +1,19 @@
+id										POI 식별자	bigint		Y	Y	Y	
+geom										지오메트리 데이터	geometry				Y	PostGIS 제공, GiST 인덱스
+longitude										위도	double precision					
+latitude										경도	double precision					
+classname										클래스명	character varying	256				
+time										POI 검출 시기	timestamp with time zone					
+img_received										이미지 수신 여부	boolean					
+utm_x										utm52n 기준 x좌표	double precision					
+utm_y										utm52n 기준 y좌표	double precision					
+utm_z										utm52n 기준 z좌표	double precision					
+regionname_1										주소데이터1	character varying	256				
+regionname_2										주소데이터2	character varying	256				
+regionname_3										주소데이터3	character varying	256				
+regionname_4										주소데이터4	character varying	256				
+roadaddr										도로명주소데이터1	character varying	256				
+roadaddrnum										도로명주소데이터2	integer					
+isprocessed										처리상태	boolean					
+mb_serial										메인보드시리얼	character varying	256				
+mt_serial										장비시리얼	character varying	256				
