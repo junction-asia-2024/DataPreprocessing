@@ -55,6 +55,3 @@ def ranking_danger_combined() -> dict:
     result["date_max_time"] = max_date_str
 
     return result
-
-
-
