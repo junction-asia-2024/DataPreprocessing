@@ -4,13 +4,12 @@ import numpy as np
 
 # 데이터 로드
 data = pd.read_csv("data/경상북도.csv")
-data["status"] = np.random.randint(0, 3, size=len(data))
 
 # 확인할 컬럼
-drop_kind_data = ["geom", "utm_x", "utm_y", "utm_z"]
+drop_kind_data = ["geom", "utm_x", "utm_y", "utm_z", "status"]
 
 # 재배열할 컬럼
-reindex_col = ["id", "longitude", "latitude", "classname", "time", "address", "status"]
+reindex_col = ["id", "longitude", "latitude", "classname", "time", "address"]
 
 # null 값을 가진 행을 삭제한 새로운 DataFrame 생성
 filtered_data = data.drop(columns=drop_kind_data)
